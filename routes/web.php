@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Group;
+use App\Http\Controllers\GroupController;
 use App\Models\Place;
 use App\Models\Trolley;
 use App\Models\User;
@@ -29,12 +29,8 @@ Route::prefix('settings')->group(function() {
         ]);
     })->name('users');
 
-    Route::get('/groups', function() {
-        return view('groups', [
-            'heading' => 'Groups List',
-            'groupsList' => Group::all()
-        ]);
-    });
+    Route::get('/groups', [GroupController::class, 'showAll']);
+    Route::get('/groups/{group}', [GroupController::class, 'showSingle']);
 
     Route::get('/trolleys', function() {
         return view('trolleys', [
