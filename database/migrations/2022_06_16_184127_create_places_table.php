@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name');
             $table->boolean('active');
-            $table->longText('comments');
+            $table->longText('comments');   
         });
     }
 
