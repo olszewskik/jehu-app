@@ -29,8 +29,10 @@ Route::prefix('settings')->group(function() {
         ]);
     })->name('users');
 
-    Route::get('/groups', [GroupController::class, 'showAll']);
-    Route::get('/groups/{group}', [GroupController::class, 'showSingle']);
+    Route::get('/groups', [GroupController::class, 'index']);
+    Route::get('/groups/create', [GroupController::class, 'create']);
+    Route::post('/groups', [GroupController::class, 'store']);
+    Route::get('/groups/{group}', [GroupController::class, 'show']);
 
     Route::get('/trolleys', function() {
         return view('trolleys', [

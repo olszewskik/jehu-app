@@ -18,4 +18,8 @@
     @endforeach
 </table>
 
+<a href="/settings/groups/create">
+    <button>Add New Group</button>
+</a>
+
 @endsection
