@@ -7,10 +7,9 @@
     <div>
         <label for="name">Name</label>
         <input type="text" name="name" />
-    </div>
-    <div>
-        <label for="blocked">Blocked</label>
-        <input type="checkbox" name="blocked" />
+        @error('name')
+            <p>{{$message}}</p>
+        @enderror
     </div>
     <div>
         <input type="submit" value="Submit">

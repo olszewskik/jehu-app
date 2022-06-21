@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Group;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class GroupController extends Controller
 {
@@ -32,6 +33,13 @@ class GroupController extends Controller
     }
 
     public function store(Request $request) {
-        dd($request->all());
+        $formFields = $request->validate([
+            'name' => ['required', Rule::unique('groups', 'name')],
+        ]);
+        $request->blocked = 1;
+
+        Group::create($request->all());
+        
+        return redirect('/settings/groups');
     }
 }

@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->boolean('blocked');
+            $table->boolean('blocked')->default(0);
+            $table->string('_token');
         });
     }
 
