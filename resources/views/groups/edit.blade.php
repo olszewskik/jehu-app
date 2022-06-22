@@ -2,11 +2,12 @@
 
 @section('content')
 
-<form method="POST", action="/settings/groups">
+<form method="POST", action="/settings/groups/{{$group->id}}">
     @csrf
+    @method('PUT')
     <div>
         <label for="name">Name</label>
-        <input type="text" name="name" value="{{old('name')}}"/>
+        <input type="text" name="name" value="{{$group->name}}"/>
         @error('name')
             <p>{{$message}}</p>
         @enderror
@@ -16,7 +17,7 @@
         <input type="checkbox" name="blocked" value="1"/>
     </div>
     <div>
-        <input type="submit" value="Submit">
+        <button>Save</button>
     </div>
 </form>
 

@@ -32,6 +32,8 @@ Route::prefix('settings')->group(function() {
     Route::get('/groups', [GroupController::class, 'index']);
     Route::get('/groups/create', [GroupController::class, 'create']);
     Route::post('/groups', [GroupController::class, 'store']);
+    Route::get('/groups/{group}/edit', [GroupController::class, 'edit']);
+    Route::put('/groups/{group}', [GroupController::class, 'update']);
     Route::get('/groups/{group}', [GroupController::class, 'show']);
 
     Route::get('/trolleys', function() {

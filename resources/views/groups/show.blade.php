@@ -12,6 +12,9 @@
         <td>{{$group['id']}}</td> 
         <td>{{$group['name']}}</td>
         <td>{{$group['blocked']}}</td>
+        <td>
+            <a href="/settings/groups/{{$group->id}}/edit">Edit</a>
+        </td>
     </tr>    
 </table>
 

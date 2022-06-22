@@ -18,8 +18,14 @@
     @endforeach
 </table>
 
-<a href="/settings/groups/create">
-    <button>Add New Group</button>
-</a>
+<div>
+    {{$groupsList->links()}}
+</div>
+
+<div>
+    <a href="/settings/groups/create">
+        <button>Add New Group</button>
+    </a>
+</div>
 
 @endsection

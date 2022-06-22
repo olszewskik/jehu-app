@@ -12,7 +12,7 @@ class GroupController extends Controller
     public function index() {
         return view('groups.index', [
             'heading' => 'Groups List',
-            'groupsList' => Group::all()
+            'groupsList' => Group::paginate(20)
         ]);
     }
 
@@ -36,10 +36,23 @@ class GroupController extends Controller
         $formFields = $request->validate([
             'name' => ['required', Rule::unique('groups', 'name')],
         ]);
-        $request->blocked = 1;
 
         Group::create($request->all());
         
         return redirect('/settings/groups');
+    }
+
+    public function edit(Group $group) {
+        return view('groups.edit', ['group' => $group]);
+    }
+
+    public function update(Request $request, Group $group) {
+        $formFields = $request->validate([
+            'name' => 'required'
+        ]);
+
+        $group->update(['name' => $request['name'], 'blocked' => $request['blocked']]);
+        
+        return back();
     }
 }
