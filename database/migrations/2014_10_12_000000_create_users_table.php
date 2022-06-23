@@ -23,9 +23,9 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();  
-            $table->boolean('blocked');
-            $table->boolean('allow_booking_for_group');
-            $table->boolean('admin');
+            $table->boolean('blocked')->default(0);
+            $table->boolean('allow_booking_for_group')->default(0);
+            $table->boolean('admin')->default(0);
         });
     }
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\UserController;
 use App\Models\Place;
 use App\Models\Trolley;
 use App\Models\User;
@@ -34,6 +35,7 @@ Route::prefix('settings')->group(function() {
     Route::post('/groups', [GroupController::class, 'store']);
     Route::get('/groups/{group}/edit', [GroupController::class, 'edit']);
     Route::put('/groups/{group}', [GroupController::class, 'update']);
+    Route::delete('/groups/{group}', [GroupController::class, 'destroy']);
     Route::get('/groups/{group}', [GroupController::class, 'show']);
 
     Route::get('/trolleys', function() {
@@ -57,4 +59,9 @@ Route::prefix('settings')->group(function() {
     Route::get('/schedules', function() {
         return 'schedules';
     });
+
+    
 });
+
+Route::get('/register', [UserController::class, 'create']);
+Route::post('/users', [UserController::class, 'store']);

@@ -15,6 +15,13 @@
         <td>
             <a href="/settings/groups/{{$group->id}}/edit">Edit</a>
         </td>
+        <td>
+            <form method="POST" action="/settings/groups/{{$group->id}}">
+                @csrf
+                @method('DELETE')
+                <button>Delete</button>
+            </form>
+        </td>
     </tr>    
 </table>
 

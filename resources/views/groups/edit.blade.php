@@ -14,7 +14,10 @@
     </div>
     <div>
         <label for="blocked">Blocked</label>
-        <input type="checkbox" name="blocked" value="1"/>
+        <input type="checkbox" name="blocked" value="1" 
+        @if ($group->blocked)
+            checked    
+        @endif/>
     </div>
     <div>
         <button>Save</button>

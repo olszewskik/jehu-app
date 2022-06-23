@@ -51,8 +51,19 @@ class GroupController extends Controller
             'name' => 'required'
         ]);
 
-        $group->update(['name' => $request['name'], 'blocked' => $request['blocked']]);
+        if ($request['blocked']) {
+            $blockedFormField = 1;    
+        } else {
+            $blockedFormField = 0;
+        }
+        
+        $group->update(['name' => $formFields['name'], 'blocked' => $blockedFormField]);
         
         return back();
+    }
+
+    public function destroy(Group $group) { 
+        $group->delete();
+        return redirect('/settings/groups');
     }
 }
