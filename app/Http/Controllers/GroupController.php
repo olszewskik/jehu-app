@@ -12,7 +12,7 @@ class GroupController extends Controller
     public function index() {
         return view('groups.index', [
             'heading' => 'Groups List',
-            'groupsList' => Group::paginate(20)
+            'groupsList' => Group::paginate(2)
         ]);
     }
 

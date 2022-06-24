@@ -8,17 +8,19 @@
     <link rel="stylesheet" href={{ asset('css/app.css') }}>
 </head>
 <body>
+    
+    <nav class="nav">
+        <li><a class="nav-link" href='/register'>Register</a></li>
+        <li><a class="nav-link" href='/settings/users'>Users</a></li>
+        <li><a class="nav-link" href='/settings/groups'>Groups</a></li>
+        <li><a class="nav-link" href='/settings/places'>Places</a></li>
+        <li><a class="nav-link" href='/settings/trolleys'>Trolleys</a></li>
+    </nav>
+    
     <div class="container">
-    <menu>
-        <li><a href='/register'>Register</a></li>
-        <li><a href='/settings/users'>Users</a></li>
-        <li><a href='/settings/groups'>Groups</a></li>
-        <li><a href='/settings/places'>Places</a></li>
-        <li><a href='/settings/trolleys'>Trolleys</a></li>
-    </menu>
+    @yield('content')
     </div>
     
-    @yield('content')
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
