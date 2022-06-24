@@ -23,11 +23,6 @@ class GroupController extends Controller
         ]);
     }
 
-    // public function showAllApi() {
-    //     return response()->json([
-    //         'groups' => Group::all()]);
-    // }
-
     public function create() {
         return view('groups.create');
     }
@@ -35,9 +30,10 @@ class GroupController extends Controller
     public function store(Request $request) {
         $formFields = $request->validate([
             'name' => ['required', Rule::unique('groups', 'name')],
+            'blocked' => 'boolean',
         ]);
 
-        Group::create($request->all());
+        Group::create($formFields);
         
         return redirect('/settings/groups');
     }
@@ -48,21 +44,19 @@ class GroupController extends Controller
 
     public function update(Request $request, Group $group) {
         $formFields = $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'blocked' => 'boolean',
         ]);
 
-        if ($request['blocked']) {
-            $blockedFormField = 1;    
-        } else {
-            $blockedFormField = 0;
+        if (!$request['blocked']) {
+            $formFields['blocked'] = 0;
         }
         
-        $group->update(['name' => $formFields['name'], 'blocked' => $blockedFormField]);
-        
+        $group->update(['name' => $formFields['name'], 'blocked' => $formFields['blocked']]);        
         return back();
     }
 
-    public function destroy(Group $group) { 
+    public function delete(Group $group) { 
         $group->delete();
         return redirect('/settings/groups');
     }
