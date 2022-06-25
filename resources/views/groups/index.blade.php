@@ -3,11 +3,11 @@
 @section('content')
 
 <h1>{{$heading}}</h1>
-<table>
+<table class="table table-hover">
     <tr>
         <th>Id</th>
-        <th>Name</th>
-        <th>Blocked</th>
+        <th>@lang('content.name')</th>
+        <th>@lang('content.blocked')</th>
     </tr>
     @foreach ($groupsList as $group)
     <tr>
