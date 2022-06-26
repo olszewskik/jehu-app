@@ -23,15 +23,10 @@ Route::get('/', function () {
 });
 
 Route::prefix('settings')->group(function() {
-    Route::get('/users', function() {
-        return view('users', [
-            'heading' => 'Users List',
-            'usersList' => User::all()
-        ]);
-    })->name('users');
+    Route::get('/users', [UserController::class, 'index']);
 
     Route::get('/groups', [GroupController::class, 'index']);
-    Route::get('/groups/create', [GroupController::class, 'create']);
+    Route::get('/groups/create', [GroupController::class, 'create'])->middleware('auth');
     Route::post('/groups', [GroupController::class, 'store']);
     Route::get('/groups/{group}/edit', [GroupController::class, 'edit']);
     Route::put('/groups/{group}', [GroupController::class, 'update']);
@@ -66,5 +61,5 @@ Route::prefix('settings')->group(function() {
 Route::get('/register', [UserController::class, 'create']);
 Route::post('/users', [UserController::class, 'store']);
 Route::post('/logout', [UserController::class, 'logout']);
-Route::get('/login', [UserController::class, 'login']);
+Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);

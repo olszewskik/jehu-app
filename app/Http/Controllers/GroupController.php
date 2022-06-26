@@ -32,6 +32,8 @@ class GroupController extends Controller
             'blocked' => 'boolean',
         ]);
 
+        $formFields['user_id'] = auth()->user()->id;
+
         Group::create($formFields);
         
         return redirect('/settings/groups');

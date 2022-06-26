@@ -8,6 +8,13 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
+
+    public function index() {
+        return view('users.index', [
+            'usersList' => User::paginate(10)
+        ]);
+    }
+
     public function create() {
         return view('users.register');
     }
