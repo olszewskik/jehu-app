@@ -32,7 +32,7 @@ class UserController extends Controller
         return redirect('/');
     }
 
-    //Logout user
+    // Logout user
     public function logout(Request $request) {
         auth()->logout();
 
@@ -40,5 +40,25 @@ class UserController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+    public function login() {
+        return view('users.login');
+    }
+
+    public function authenticate(Request $request) {
+        $formFields = $request->validate([
+            'login' => 'required',
+            'password' => 'required'
+        ]);
+
+        if(auth()->attempt($formFields)) {
+            $request->session()->regenerate();
+
+            return redirect('/settings/groups');
+        }
+
+        return back()->withErrors(['login' => 'Invalid Credentials'])->onlyInput('login');
+       
     }
 }

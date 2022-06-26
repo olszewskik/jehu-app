@@ -11,7 +11,6 @@ class GroupController extends Controller
     //Show all groups
     public function index() {
         return view('groups.index', [
-            'heading' => 'Groups List',
             'groupsList' => Group::paginate(10)
         ]);
     }

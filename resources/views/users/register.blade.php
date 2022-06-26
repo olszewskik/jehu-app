@@ -35,7 +35,7 @@
         @enderror
     </div>
     <div>
-        <label for="password">Name</label>
+        <label for="password">Password</label>
         <input type="password" name="password" value="{{old('password')}}"/>
         @error('password')
             <p>{{$message}}</p>

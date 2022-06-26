@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>{{$heading}}</h1>
+<h1>Groups List</h1>
 <table class="table table-hover">
     <tr>
         <th>Id</th>
