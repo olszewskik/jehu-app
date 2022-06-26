@@ -23,7 +23,7 @@ Route::get('/', function () {
 });
 
 Route::prefix('settings')->group(function() {
-    Route::get('/users', [UserController::class, 'index']);
+    Route::get('/users', [UserController::class, 'index'])->name('users');
 
     Route::get('/groups', [GroupController::class, 'index']);
     Route::get('/groups/create', [GroupController::class, 'create'])->middleware('auth');
@@ -31,7 +31,7 @@ Route::prefix('settings')->group(function() {
     Route::get('/groups/{group}/edit', [GroupController::class, 'edit']);
     Route::put('/groups/{group}', [GroupController::class, 'update']);
     Route::delete('/groups/{group}', [GroupController::class, 'destroy']);
-    Route::get('/groups/{group}', [GroupController::class, 'show']);
+    Route::get('/groups/{group}', [GroupController::class, 'show'])->name('group');;
 
     Route::get('/trolleys', function() {
         return view('trolleys', [

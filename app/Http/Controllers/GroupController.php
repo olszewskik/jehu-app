@@ -54,10 +54,10 @@ class GroupController extends Controller
         }
         
         $group->update(['name' => $formFields['name'], 'blocked' => $formFields['blocked']]);        
-        return back();
+        return redirect()->route('group', ['group' => $group->id]);
     }
 
-    public function delete(Group $group) { 
+    public function destroy(Group $group) { 
         $group->delete();
         return redirect('/settings/groups');
     }
