@@ -8,7 +8,7 @@
         <label for="name">Name</label>
         <input type="text" name="name" value="{{old('name')}}"/>
         @error('name')
-            <p>{{$message}}</p>
+            {{$message}}
         @enderror
     </div>
     <div class="form-check form-switch">
