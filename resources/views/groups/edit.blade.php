@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form method="POST", action="/settings/groups/{{$group->id}}">
+<form method="POST", action="/manage/groups/{{$group->id}}">
     @csrf
     @method('PUT')
     <div>

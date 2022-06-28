@@ -22,17 +22,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('settings')->group(function() {
-    Route::get('/users', [UserController::class, 'index'])->name('users');
 
-    Route::get('/groups', [GroupController::class, 'index']);
-    Route::get('/groups/create', [GroupController::class, 'create'])->middleware('auth');
-    Route::post('/groups', [GroupController::class, 'store']);
-    Route::get('/groups/{group}/edit', [GroupController::class, 'edit']);
-    Route::put('/groups/{group}', [GroupController::class, 'update']);
-    Route::delete('/groups/{group}', [GroupController::class, 'destroy']);
-    Route::get('/groups/{group}', [GroupController::class, 'show'])->name('group');;
 
+Route::prefix('manage')->group(function() {
+    Route::controller(GroupController::class)->group(function(){
+        Route::get('/groups','index');
+        Route::get('/groups/create','create')->middleware('auth');
+        Route::post('/groups','store');
+        Route::get('/groups/{group}/edit','edit');
+        Route::put('/groups/{group}','update');
+        Route::delete('/groups/{group}','destroy');
+        Route::get('/groups/{group}','show')->name('group');;
+    });
+    
     Route::get('/trolleys', function() {
         return view('trolleys', [
             'heading' => 'Trolleys List',
@@ -46,19 +48,11 @@ Route::prefix('settings')->group(function() {
             'placesList' => Place::all()
         ]);
     });
-
-    Route::get('/booking-hours', function() {
-        return 'booking hours';
-    });
-
-    Route::get('/schedules', function() {
-        return 'schedules';
-    });
-
     
 });
 
 Route::get('/register', [UserController::class, 'create']);
+Route::get('/users', [UserController::class, 'index'])->name('users');
 Route::post('/users', [UserController::class, 'store']);
 Route::post('/logout', [UserController::class, 'logout']);
 Route::get('/login', [UserController::class, 'login'])->name('login');

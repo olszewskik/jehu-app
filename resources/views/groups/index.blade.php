@@ -11,7 +11,7 @@
     </tr>
     @foreach ($groupsList as $group)
     <tr>
-        <td><a href='/settings/groups/{{$group->id}}'>{{$group['id']}}</a></td> 
+        <td><a href='/manage/groups/{{$group->id}}'>{{$group['id']}}</a></td> 
         <td>{{$group['name']}}</td>
         <td>{{$group['blocked']}}</td>
     </tr>    
@@ -23,7 +23,7 @@
 </div>
 
 <div>
-    <a href="/settings/groups/create">
+    <a href="/manage/groups/create">
         <button>Add New Group</button>
     </a>
 </div>

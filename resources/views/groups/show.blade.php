@@ -13,10 +13,10 @@
         <td>{{$group['name']}}</td>
         <td>{{$group['blocked']}}</td>
         <td>
-            <a href="/settings/groups/{{$group->id}}/edit">Edit</a>
+            <a href="/manage/groups/{{$group->id}}/edit">Edit</a>
         </td>
         <td>
-            <form method="POST" action="/settings/groups/{{$group->id}}">
+            <form method="POST" action="/manage/groups/{{$group->id}}">
                 @csrf
                 @method('DELETE')
                 <button>Delete</button>
