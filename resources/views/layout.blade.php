@@ -19,10 +19,10 @@
               <a class="nav-link" href='/manage/users'>Users</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href='/manage/groups'>Groups</a>
+              <a class="nav-link" href={{ route('group.index') }}>Groups</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href='/manage/places'>Places</a>
+              <a class="nav-link" href={{ route('places.index') }}>Places</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href='/manage/trolleys'>Trolleys</a>

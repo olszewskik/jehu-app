@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\UserController;
 use App\Models\Place;
 use App\Models\Trolley;
@@ -25,8 +26,8 @@ Route::get('/', function () {
 
 
 Route::prefix('manage')->group(function() {
-    Route::controller(GroupController::class)->group(function(){
-        Route::get('/groups','index');
+    Route::controller(GroupController::class)->group(function() {
+        Route::get('/groups','index')->name('group.index');
         Route::get('/groups/create','create')->middleware('auth');
         Route::post('/groups','store');
         Route::get('/groups/{group}/edit','edit');
@@ -50,6 +51,22 @@ Route::prefix('manage')->group(function() {
     });
     
 });
+
+Route::middleware('auth')->group(function() {
+    Route::prefix('places')->group(function() {
+        Route::controller(PlaceController::class)->group(function() {
+            Route::get('/', 'index')->name('places.index');
+            Route::get('/create', 'create')->name('places.create');
+            Route::post('/', 'store')->name('places.store');
+            Route::get('/{place}', 'show')->name('places.show');
+            Route::get('/{place}/edit', 'edit')->name('places.edit');
+            Route::put('/{place}', 'update')->name('places.update');
+            Route::delete('/{place}', 'destroy')->name('places.destroy');
+        });
+    });
+});
+
+
 
 Route::get('/register', [UserController::class, 'create']);
 Route::get('/users', [UserController::class, 'index'])->name('users');
