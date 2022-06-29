@@ -62,7 +62,7 @@ class UserController extends Controller
         if(auth()->attempt($formFields)) {
             $request->session()->regenerate();
 
-            return redirect('/settings/groups');
+            return redirect('/manage/groups');
         }
 
         return back()->withErrors(['login' => 'Invalid Credentials'])->onlyInput('login');

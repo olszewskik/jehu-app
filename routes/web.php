@@ -27,7 +27,7 @@ Route::get('/', function () {
 
 Route::prefix('manage')->group(function() {
     Route::controller(GroupController::class)->group(function() {
-        Route::get('/groups','index')->name('group.index');
+        Route::get('/groups','index')->name('group.index')->middleware('language');
         Route::get('/groups/create','create')->middleware('auth');
         Route::post('/groups','store');
         Route::get('/groups/{group}/edit','edit');
