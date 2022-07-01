@@ -24,14 +24,9 @@ class SetLocale
         if (Auth::check()) {
             $locale = auth()->user()->language;
         } else {
-            $locale = Session::get('locale', Config::get('app.locale'));
+            Session::put('locale', Config::get('app.locale'));
+            $locale = Session::get('locale');
         }
-
-        // if (Session::has('locale')) {
-        //     $locale = Session::get('locale', Config::get('app.locale'));
-        // } else {
-        //     $locale = auth()->user()->language;
-        // }
 
         App::setlocale($locale);
 

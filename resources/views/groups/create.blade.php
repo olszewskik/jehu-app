@@ -13,7 +13,7 @@
     </div>
     <div class="form-check form-switch">
         <label for="blocked">Blocked</label>
-        <input class="form-check-input" type="checkbox" role="switch" blocked" value="1"/>
+        <input class="form-check-input" type="checkbox" role="switch" blocked value="1"/>
     </div>
     <div>
         <input type="submit" value="Submit">

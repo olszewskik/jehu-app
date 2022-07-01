@@ -54,7 +54,7 @@ class GroupController extends Controller
         }
         
         $group->update(['name' => $formFields['name'], 'blocked' => $formFields['blocked']]);        
-        return redirect()->route('group', ['group' => $group->id]);
+        return redirect()->route('group.show', ['group' => $group->id]);
     }
 
     public function destroy(Group $group) { 
