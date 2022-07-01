@@ -4,9 +4,6 @@ use App\Http\Controllers\GroupController;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserController;
-use App\Models\Place;
-use App\Models\Trolley;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,34 +21,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
-// Route::prefix('manage')->group(function() {
-//     Route::controller(GroupController::class)->group(function() {
-//         Route::get('/groups','index')->name('group.index')->middleware('language');
-//         Route::get('/groups/create','create')->middleware('auth');
-//         Route::post('/groups','store');
-//         Route::get('/groups/{group}/edit','edit');
-//         Route::put('/groups/{group}','update');
-//         Route::delete('/groups/{group}','destroy');
-//         Route::get('/groups/{group}','show')->name('group');;
-//     });
-    
-//     Route::get('/trolleys', function() {
-//         return view('trolleys', [
-//             'heading' => 'Trolleys List',
-//             'trolleysList' => Trolley::all()
-//         ]);
-//     });
-
-//     Route::get('/places', function() {
-//         return view('places', [
-//             'heading' => 'Places List',
-//             'placesList' => Place::all()
-//         ]);
-//     });
-    
-// });
 
 Route::middleware('auth')->group(function() {
     Route::middleware('language')->group(function() {
@@ -79,7 +48,8 @@ Route::middleware('auth')->group(function() {
         });
         Route::prefix('settings')->group(function(){
             Route::controller(SettingsController::class)->group(function(){
-
+                Route::get('/general','edit')->name('general.edit');
+                Route::put('/general','update')->name('general.update');
             });
         });
     });
