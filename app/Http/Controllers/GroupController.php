@@ -11,7 +11,7 @@ class GroupController extends Controller
     //Show all groups
     public function index() {
         return view('groups.index', [
-            'groupsList' => Group::paginate(10)
+            'groupsList' => Group::paginate(3)
         ]);
     }
 
@@ -36,7 +36,7 @@ class GroupController extends Controller
 
         Group::create($formFields);
         
-        return redirect('/settings/groups');
+        return redirect()->route('group.index');
     }
 
     public function edit(Group $group) {
@@ -59,6 +59,6 @@ class GroupController extends Controller
 
     public function destroy(Group $group) { 
         $group->delete();
-        return redirect('/settings/groups');
+        return redirect()->route('group.index');
     }
 }

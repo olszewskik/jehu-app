@@ -8,7 +8,7 @@
     <link rel="stylesheet" href={{ asset('css/app.css') }}>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">Home</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +38,7 @@
               <li class="nav-item">
                 <form class="d-flex" method="POST" action="/logout">
                   @csrf
-                  <button class="btn btn-outline-light" type="submit">
+                  <button class="btn btn-outline-secondary" type="submit">
                     logout
                   </button>
                 </form>

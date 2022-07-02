@@ -1,4 +1,4 @@
-@if ($paginator->hasPages())
+@if ($paginator->hasPages()) 
     <nav class="d-flex justify-items-center justify-content-between">
         <div class="d-flex justify-content-between flex-fill d-sm-none">
             <ul class="pagination">
@@ -25,17 +25,24 @@
                 @endif
             </ul>
         </div>
-
+        
         <div class="d-none flex-sm-fill d-sm-flex align-items-sm-center justify-content-sm-between">
             <div>
                 <p class="small text-muted">
-                    {!! __('Showing') !!}
+                    {{-- {!! __('Showing') !!}
                     <span class="font-medium">{{ $paginator->firstItem() }}</span>
                     {!! __('to') !!}
                     <span class="font-medium">{{ $paginator->lastItem() }}</span>
                     {!! __('of') !!}
                     <span class="font-medium">{{ $paginator->total() }}</span>
-                    {!! __('results') !!}
+                    {!! __('results') !!} --}}
+                    @lang('pagination.showing')
+                    <span class="font-medium">{{ $paginator->firstItem() }}</span>
+                    @lang('pagination.to')
+                    <span class="font-medium">{{ $paginator->lastItem() }}</span>
+                    @lang('pagination.of')
+                    <span class="font-medium">{{ $paginator->total() }}</span>
+                    @lang('pagination.results')
                 </p>
             </div>
 

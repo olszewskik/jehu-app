@@ -2,28 +2,32 @@
 
 @section('content')
 
-<h1>Login user</h1>
-
-<form method="POST", action="/users/authenticate">
-    @csrf
-    <div>
-        <label for=login">Login</label>
-        <input type="text" name="login" value="{{old('login')}}"/>
-        @error('login')
-            <p>{{$message}}</p>
-        @enderror
+<div class="container">
+    <div class="col-6">
+        <div class="card">
+            <h4 class="card-header">Login user</h4>
+            <div class="card-body">
+                <form method="POST", action="/users/authenticate">
+                    @csrf
+                    <div class="mb-3">
+                        <label for=login" class="form-label">Login</label>
+                        <input type="text" class="form-control" name="login" value="{{old('login')}}"/>
+                        @error('login')
+                            <p>{{$message}}</p>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password" value="{{old('password')}}"/>
+                        @error('password')
+                            <p>{{$message}}</p>
+                        @enderror
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>
+        </div>
     </div>
-    <div>
-        <label for="password">Password</label>
-        <input type="password" name="password" value="{{old('password')}}"/>
-        @error('password')
-            <p>{{$message}}</p>
-        @enderror
-    </div>
-
-    <div>
-        <input type="submit" value="Submit">
-    </div>
-</form>
+</div>
 
 @endsection
