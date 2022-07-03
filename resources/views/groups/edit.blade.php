@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form method="POST", action="/manage/groups/{{$group->id}}">
+{{-- <form method="POST", action="/manage/groups/{{$group->id}}">
     @csrf
     @method('PUT')
     <div>
@@ -22,7 +22,7 @@
     <div>
         <button>Save</button>
     </div>
-</form>
+</form> --}}
 
 
 
@@ -72,18 +72,28 @@
         <div id="collapseGeneral" class="accordion-collapse collapse show" aria-labelledby="general" data-bs-parent="#accordion">
             <div class="accordion-body">        
 
-                <form class="row g-3">
-                    <div class="col-md-4">
+                <form class="row g-3" method="POST" action="/manage/groups/{{$group->id}}">
+                    @csrf
+                    @method('PUT')
+                    <div class="col-md-6">
                       <label for="id" class="form-label">Id</label>
                       <input type="text" class="form-control" id="id" value="{{$group['id']}}" disabled>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                       <label for="name" class="form-label">Nazwa</label>
-                      <input type="text" class="form-control" id="name" value="{{$group['name']}}">
+                      <input type="text" class="form-control" id="name" name="name" value="{{$group['name']}}">
+                        @error('name')
+                            <p>{{$message}}</p>
+                        @enderror
                     </div>
                     <div class="col-md-6">
                       <label for="overseer" class="form-label">Nadzorca grupy</label>
-                      <input type="text" class="form-control" id="overseer">
+                      <select id="overseer" class="form-select">
+                        <option selected></option>
+                        @foreach ($users as $user)
+                        <option value={{$user->id}}>{{$user->last_name}} {{$user->first_name}}</option>
+                        @endforeach
+                      </select>
                     </div>
                     <div class="col-md-6">
                       <label for="deputyOverseer" class="form-label">Zastępca</label>
@@ -92,7 +102,7 @@
                      <div class="col-12">
                       <div class="form-check form-switch">
                         <label class="form-check-label" for="blocked">Zablokowane</label>
-                        <input class="form-check-input" type="checkbox" id="blocked"
+                        <input class="form-check-input" type="checkbox" id="blocked" name="blocked" value="1"
                             @if ($group['blocked'])
                                 checked>
                             @endif

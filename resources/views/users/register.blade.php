@@ -9,23 +9,23 @@
             <form method="POST", action="/users">
                 @csrf
                 <div class="mb-3">
-                    <label for=login" class="form-label">Login</label>
-                    <input type="text" class="form-control" name="login" value="{{old('login')}}"/>
-                    @error('login')
-                        <p>{{$message}}</p>
-                    @enderror
-                </div>
-                <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
+                    <label for=name" class="form-label">Login</label>
                     <input type="text" class="form-control" name="name" value="{{old('name')}}"/>
                     @error('name')
                         <p>{{$message}}</p>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="surname" class="form-label">Surname</label>
-                    <input type="text" class="form-control" name="surname" value="{{old('surname')}}"/>
-                    @error('surname')
+                    <label for="first_name" class="form-label">Firstname</label>
+                    <input type="text" class="form-control" name="first_name" value="{{old('first_name')}}"/>
+                    @error('first_name')
+                        <p>{{$message}}</p>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="last_name" class="form-label">Lastname</label>
+                    <input type="text" class="form-control" name="last_name" value="{{old('last_name')}}"/>
+                    @error('last_name')
                         <p>{{$message}}</p>
                     @enderror
                 </div>
@@ -33,6 +33,13 @@
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" name="email" value="{{old('email')}}"/>
                     @error('email')
+                        <p>{{$message}}</p>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone No.</label>
+                    <input type="number" class="form-control" name="phone" value="{{old('phone')}}"/>
+                    @error('phone')
                         <p>{{$message}}</p>
                     @enderror
                 </div>

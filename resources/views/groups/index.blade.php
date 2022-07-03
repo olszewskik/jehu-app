@@ -12,11 +12,12 @@
 <hr>
 
 <table class="table table-hover">
-    <tr>
-        <th>@lang('content.name')</th>
-        <th>@lang('content.blocked')</th>
-        <th></th>
-    </tr>
+        <tr>
+            <th>@lang('content.name')</th>
+            <th>Nadzorca grupy</th>
+            <th>@lang('content.blocked')</th>
+            <th></th>
+        </tr>
     @foreach ($groupsList as $group)
 
     <!-- Modal -->
@@ -46,6 +47,7 @@
         class="text-black-50"
     @endif>
         <td>{{$group['name']}}</td>
+        <td></td>
         <td><input class="form-check-input" type="checkbox" value="" disabled 
             @if ($group['blocked'])
                 checked>

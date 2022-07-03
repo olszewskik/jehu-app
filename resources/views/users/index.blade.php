@@ -7,7 +7,7 @@
     <hr>
     <div>
         <a href="/manage/groups/create">
-            <button class="btn btn-primary btn-sm">+ New</button>
+            <button class="btn btn-primary btn-sm">New</button>
         </a>
     </div>
     <hr>
@@ -20,13 +20,15 @@
             <th>Imię</th>
             <th>Nazwisko</th>
             <th>Email</th>
+            <th>Telefon</th>
         </tr>
         @foreach ($usersList as $user)
         <tr>
-            <td>{{$user['login']}}</td>
             <td>{{$user['name']}}</td>
-            <td>{{$user['surname']}}</td>
+            <td>{{$user['first_name']}}</td>
+            <td>{{$user['last_name']}}</td>
             <td>{{$user['email']}}</td>
+            <td>{{$user['phone']}}</td>
         </tr>    
         @endforeach
     </table>

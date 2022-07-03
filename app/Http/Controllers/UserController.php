@@ -21,10 +21,11 @@ class UserController extends Controller
 
     public function store(Request $request) {
         $formFields = $request->validate([
-            'login' => ['required', 'min:3', Rule::unique('users', 'login')],
-            'name' => 'required',
-            'surname' => 'required',
+            'name' => ['required', 'min:3', Rule::unique('users', 'name')],
+            'first_name' => 'required',
+            'last_name' => 'required',
             'email' => ['required', 'email', Rule::unique('users', 'email')],
+            'phone' => ['required', 'numeric', 'min:8'],
             'password' => ['required', 'min:8'],
         ]);
 
@@ -55,7 +56,7 @@ class UserController extends Controller
 
     public function authenticate(Request $request) {
         $formFields = $request->validate([
-            'login' => 'required',
+            'name' => 'required',
             'password' => 'required'
         ]);
 
@@ -65,7 +66,7 @@ class UserController extends Controller
             return redirect('/manage/groups');
         }
 
-        return back()->withErrors(['login' => 'Invalid Credentials'])->onlyInput('login');
+        return back()->withErrors(['name' => 'Invalid Credentials'])->onlyInput('name');
        
     }
 }

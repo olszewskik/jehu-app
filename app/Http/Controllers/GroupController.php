@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Group;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -40,7 +41,7 @@ class GroupController extends Controller
     }
 
     public function edit(Group $group) {
-        return view('groups.edit', ['group' => $group]);
+        return view('groups.edit', ['group' => $group, 'users' => User::all()]);
     }
 
     public function update(Request $request, Group $group) {

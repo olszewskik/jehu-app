@@ -33,7 +33,7 @@
             @auth
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <span class="nav-link">Welcome {{auth()->user()->name}}</span>
+                <span class="nav-link">Witaj {{auth()->user()->first_name}}</span>
               </li>
               <li class="nav-item">
                 <form class="d-flex" method="POST" action="/logout">
@@ -61,7 +61,7 @@
       </div>
     </nav>
 
-    <div class="container p-3">
+    <div class="container-lg p-3">
         @yield('content')
     </div>
     

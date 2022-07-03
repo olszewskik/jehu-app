@@ -16,16 +16,17 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('login')->unique();
-            $table->string('name');
-            $table->string('surname');
+            $table->string('name')->unique();
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->integer('phone')->unique();
             $table->string('password');
             $table->rememberToken();  
+            $table->enum('language', ['pl', 'en']);
             $table->boolean('blocked')->default(0);
-            $table->boolean('allow_booking_for_group')->default(0);
-            $table->boolean('admin')->default(0);
+            $table->boolean('group_overseer')->default(0);
         });
     }
 
