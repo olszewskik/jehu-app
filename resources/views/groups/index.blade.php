@@ -2,7 +2,14 @@
 
 @section('content')
 
-<h1>Groups List</h1>
+<h3>Groups List</h3>
+<hr>
+<div>
+    <a href="/manage/groups/create">
+        <button class="btn btn-primary btn-sm">+ New</button>
+    </a>
+</div>
+<hr>
 
 <table class="table table-hover">
     <tr>
@@ -13,7 +20,7 @@
     @foreach ($groupsList as $group)
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal-{{$group->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="removeModal-{{$group->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -36,7 +43,7 @@
     </div>
 
     <tr @if ($group['blocked'])
-        class="table-danger"
+        class="text-black-50"
     @endif>
         <td>{{$group['name']}}</td>
         <td><input class="form-check-input" type="checkbox" value="" disabled 
@@ -46,13 +53,12 @@
         </td>
         <td>
             <div class="btn-group">
-                <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                </button>
+                <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href={{ route('group.show', ['group' => $group->id]) }}>@lang('content.details')</a></li>  
                   <li><a class="dropdown-item" href="/manage/groups/{{$group->id}}/edit">@lang('content.edit')</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal-{{$group->id}}">@lang('content.remove')</button></li>
+                  <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#removeModal-{{$group->id}}">@lang('content.remove')</button></li>
                 </ul>
               </div>
         </td>
@@ -64,10 +70,5 @@
     {{$groupsList->links()}}
 </div>
 
-<div>
-    <a href="/manage/groups/create">
-        <button class="btn btn-primary btn-sm">Add New Group</button>
-    </a>
-</div>
 
 @endsection
