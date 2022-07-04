@@ -10,4 +10,6 @@ return [
     'groups' => 'Grupy',
     'places' => 'Miejsca',
     'settings' => 'Ustawienia',
+    'register' => 'Rejestracja',
+    'login' => 'Logowanie',
 ];

@@ -10,4 +10,6 @@ return [
     'groups' => 'Groups',
     'places' => 'Places',
     'settings' => 'Settings',
+    'register' => 'Register',
+    'login' => 'Login',
 ];
