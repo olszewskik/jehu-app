@@ -6,4 +6,8 @@ return [
     'details' => 'Szczegóły',
     'edit' => 'Edycja',
     'remove' => 'Usuń',
+    'users' => 'Uzytkownicy',
+    'groups' => 'Grupy',
+    'places' => 'Miejsca',
+    'settings' => 'Ustawienia',
 ];

@@ -6,10 +6,10 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <x-navbar.navitem name="Users" routeName="users"/>
-            <x-navbar.navitem name="Groups" routeName="group.index"/>
-            <x-navbar.navitem name="Places" routeName="places.index"/>
-            <x-navbar.navitem name="Settings" routeName="general.edit"/>
+            <x-navbar.navitem name='content.users' routeName="users"/>
+            <x-navbar.navitem name="content.groups" routeName="group.index"/>
+            <x-navbar.navitem name="content.places" routeName="places.index"/>
+            <x-navbar.navitem name="content.settings" routeName="general.edit"/>
           {{-- <li class="nav-item">
             <a class="nav-link {{ Route::currentRouteNamed('users') ? 'active' : '' }}" href={{ route('users') }}>Users</a>
           </li>

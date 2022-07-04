@@ -6,5 +6,8 @@ return [
     'details' => 'Details',
     'edit' => 'Edit',
     'remove' => 'Remove',
-
+    'users' => 'Users',
+    'groups' => 'Groups',
+    'places' => 'Places',
+    'settings' => 'Settings',
 ];
