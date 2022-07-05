@@ -20,7 +20,7 @@
         </tr>
     @foreach ($groupsList as $group)
 
-    <!-- Modal -->
+    {{-- <!-- Modal -->
     <div class="modal fade" id="removeModal-{{$group->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
@@ -41,7 +41,9 @@
             </div>
         </div>
         </div>
-    </div>
+    </div> --}}
+
+    <x-modal.remove-element idItemToRemove="$group->id" nameItemToRemove="$group->name"/>
 
     <tr @if ($group['blocked'])
         class="text-black-50"
