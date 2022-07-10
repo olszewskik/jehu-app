@@ -51,5 +51,6 @@
     {{$groupsList->links()}}
 </div>
 
+<x-table.table :headerNameArray="['content.name','Nadzorca grupy','content.blocked']"/>
 
 @endsection
